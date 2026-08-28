@@ -1,18 +1,43 @@
 .page {
-  --ink: #231d17;
-  --paper: #f4efe4;
-  --paper-deep: #e9e0d0;
-  --red: #a83b2f;
-  --red-dark: #76251f;
-  --gold: #d7a83d;
-  --green: #315b48;
+  --ink: #2b1d12;
+  --paper: #f1e6cd;
+  --paper-deep: #e3d3ae;
+  --red: #96261b;
+  --red-dark: #6e1d15;
+  --gold: #d99a26;
+  --green: #35634a;
+  --navy: #23486b;
+  position: relative;
   min-height: 100vh;
   overflow: hidden;
   background:
-    radial-gradient(circle at 8% 12%, rgb(215 168 61 / 10%), transparent 25rem),
-    linear-gradient(135deg, rgb(35 29 23 / 3%) 25%, transparent 25%) 0 0 / 18px 18px,
+    radial-gradient(circle at 8% 12%, rgb(217 154 38 / 14%), transparent 25rem),
+    linear-gradient(135deg, rgb(43 29 18 / 4%) 25%, transparent 25%) 0 0 / 18px 18px,
     var(--paper);
   color: var(--ink);
+}
+
+/* Woven krama strip across the very top — a nod to 90s shop-front banners. */
+.page::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 8px;
+  z-index: 10;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 7px,
+      rgb(150 38 27 / 78%) 7px 14px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 7px,
+      rgb(150 38 27 / 78%) 7px 14px
+    ),
+    var(--gold);
+  content: "";
 }
 
 .header,
@@ -510,6 +535,14 @@
   content: "";
 }
 
+/* Grid of EntryCard components (see components/EntryCard.js). */
+.entryGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
 .comingSoon .eyebrow {
   color: #e2b85a;
 }
@@ -522,7 +555,7 @@
   letter-spacing: -0.04em;
 }
 
-.comingSoon div > p {
+.comingSoon > div > p {
   max-width: 570px;
   margin: 0;
   color: rgb(248 240 223 / 66%);

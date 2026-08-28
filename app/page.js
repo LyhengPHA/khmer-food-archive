@@ -1,4 +1,6 @@
 import collection from "../collection.config.js";
+import EntryCard from "../components/EntryCard.js";
+import sampleEntries from "../data/sampleEntries.js";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -109,15 +111,22 @@ export default function Home() {
           <span aria-hidden="true" /> The collection is growing
         </p>
         <div>
-          <h2>First entries coming soon.</h2>
+          <h2>The first entries.</h2>
           <p>
-            This semester, the archive will grow to include browsable stories,
-            community contributions, and carefully reviewed entries.
+            Three dishes open this archive. Each card will link to a full record
+            as browsable stories, community contributions, and reviewed entries
+            arrive.
           </p>
         </div>
-        <span className={styles.zero} aria-label="Zero published entries">
-          00
+        <span className={styles.zero} aria-label="Three published entries">
+          03
         </span>
+
+        <div className={styles.entryGrid}>
+          {sampleEntries.map((entry, index) => (
+            <EntryCard key={entry.slug} entry={entry} index={index} />
+          ))}
+        </div>
       </section>
 
       <footer className={styles.footer}>
